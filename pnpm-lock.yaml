@@ -14,6 +14,15 @@ importers:
       '@astrojs/rss':
         specifier: ^4.0.2
         version: 4.0.7
+      '@fontsource-variable/inter':
+        specifier: ^5.0.19
+        version: 5.0.19
+      '@fontsource-variable/open-sans':
+        specifier: ^5.0.29
+        version: 5.0.29
+      '@fontsource/source-serif-pro':
+        specifier: ^5.0.8
+        version: 5.0.8
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.2
@@ -641,6 +650,15 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@fontsource-variable/inter@5.0.19':
+    resolution: {integrity: sha512-V5KPpF5o0sI1uNWAdFArC87NDOb/ZJDPXLomEiKmDCYMlDUCTn2flkuAZkyME2rtGOKO7vzCuDJAND0m/5PhDA==}
+
+  '@fontsource-variable/open-sans@5.0.29':
+    resolution: {integrity: sha512-p8T55iQwhErREcjY997t4ah9JKTyJNSBDDVfvVsWIQRGpA2fcTPk9rLue/Mkrr5/efkehxTSbT8JpTTRaFbM5A==}
+
+  '@fontsource/source-serif-pro@5.0.8':
+    resolution: {integrity: sha512-bb8bza+aBp6Wpz1LOXaQ9YSwMc/wNpk3hniENCPoBMMwsn9LQaJU0kKnJSSIi+ld1t7aH4jbh+mHQHN1zLfZ3A==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4339,6 +4357,12 @@ snapshots:
   '@eslint/js@8.57.0': {}
 
   '@fastify/busboy@2.1.1': {}
+
+  '@fontsource-variable/inter@5.0.19': {}
+
+  '@fontsource-variable/open-sans@5.0.29': {}
+
+  '@fontsource/source-serif-pro@5.0.8': {}
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
