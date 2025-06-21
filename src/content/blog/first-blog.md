@@ -5,7 +5,7 @@ pubDatetime: 2024-07-13T09:12:47Z
 slug: lets-begin
 featured: true
 draft: false
-description: Lets begin!
+description: Setting up my blog.
 ---
 
 Hello Universe! 👋
