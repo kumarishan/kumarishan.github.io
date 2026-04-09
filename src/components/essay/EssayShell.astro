@@ -1,0 +1,324 @@
+---
+import StandalonePostLayout from "@layouts/StandalonePostLayout.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  pubDatetime: Date;
+  modDatetime?: Date | null;
+  tags?: string[];
+}
+
+const { title, description, pubDatetime, modDatetime, tags = [] } = Astro.props;
+---
+
+<StandalonePostLayout
+  {title}
+  {description}
+  {pubDatetime}
+  {modDatetime}
+  {tags}
+  noProse={true}
+  showTitle={false}
+  maxWidth="full"
+>
+  <div class="essay-post">
+    <header class="essay-header">
+      <h1 class="essay-title" set:html={title} />
+      <p class="essay-lede">{description}</p>
+    </header>
+
+    {
+      Astro.slots.has("thesis") && (
+        <div class="essay-thesis">
+          <slot name="thesis" />
+        </div>
+      )
+    }
+
+    <slot />
+  </div>
+</StandalonePostLayout>
+
+<style>
+  .essay-post {
+    --ink: #1a1916;
+    --ink2: #3d3b36;
+    --ink3: #6b6860;
+    --ink4: #9c9a93;
+    --paper: #faf9f6;
+    --paper2: #f2f0ea;
+    --paper3: #e8e5dc;
+    --accent: #c84b2f;
+    --rule: #d8d4c8;
+
+    max-width: 740px;
+    margin: 0 auto;
+    color: var(--ink);
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :global([data-theme="dark"] .essay-post) {
+    --ink: #eae7e2;
+    --ink2: #c8c4bc;
+    --ink3: #9c9a93;
+    --ink4: #6b6860;
+    --paper: #21273a;
+    --paper2: #252d42;
+    --paper3: #2a3350;
+    --rule: #3a4460;
+  }
+
+  .essay-header {
+    padding: 2.25rem 0 2.5rem;
+    border-bottom: 1.5px solid var(--ink);
+    margin-bottom: 3.5rem;
+  }
+  .essay-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .essay-title :global(em) {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .essay-lede {
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink2);
+    line-height: 1.7;
+    max-width: 600px;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.25rem;
+  }
+
+  .essay-thesis {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.5rem 2rem;
+    margin: 0 0 3.5rem;
+  }
+  .essay-thesis :global(p) {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.65;
+    color: #b8b5a8;
+  }
+  .essay-thesis :global(strong) {
+    color: var(--paper);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  :global(.essay-post section) {
+    margin-bottom: 4rem;
+  }
+  :global(.essay-section-num) {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  :global(.essay-h2) {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  :global(.essay-prose p) {
+    font-size: 1rem;
+    color: var(--ink2);
+    margin-bottom: 1.3rem;
+    line-height: 1.8;
+  }
+  :global(.essay-prose p:last-child) {
+    margin-bottom: 0;
+  }
+  :global(.essay-prose strong) {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  :global(.essay-pq) {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background: var(--paper2);
+    border-left: 3px solid var(--ink);
+  }
+  :global(.essay-pq p) {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  :global(.essay-diagram-wrap) {
+    margin: 2.5rem 0;
+    border: 1px solid var(--rule);
+    background: var(--paper2);
+    overflow: hidden;
+  }
+  :global(.essay-diagram-label) {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink4);
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  :global(.essay-diagram-wrap svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  :global(.essay-convictions),
+  :global(.essay-contrast) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+  :global(.essay-conviction),
+  :global(.essay-contrast-col) {
+    background: var(--paper);
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+  :global(.essay-conviction:hover) {
+    background: var(--paper2);
+  }
+  :global(.essay-conviction-core) {
+    border-left: 2px solid var(--accent);
+  }
+  :global(.essay-conviction-n),
+  :global(.essay-contrast-head) {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  :global(.essay-conviction-n) {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  :global(.essay-conviction-title) {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.35;
+  }
+  :global(.essay-conviction-body) {
+    font-size: 0.82rem;
+    color: var(--ink3);
+    line-height: 1.65;
+  }
+
+  :global(.essay-contrast-col:first-child) {
+    background: var(--paper2);
+  }
+  :global(.essay-contrast-head) {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  :global(.essay-contrast-head.old) {
+    color: var(--ink4);
+  }
+  :global(.essay-contrast-head.new) {
+    color: var(--accent);
+  }
+  :global(.essay-contrast-list) {
+    list-style: none;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+  :global(.essay-contrast-list li) {
+    color: var(--ink3);
+    padding: 0.2rem 0 0.2rem 1.1rem;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+  }
+  :global(.essay-contrast-list li:last-child) {
+    border-bottom: none;
+  }
+  :global(.essay-contrast-list.new li) {
+    color: var(--ink2);
+  }
+  :global(.essay-contrast-list li::before) {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-size: 0.7rem;
+    top: 0.28rem;
+  }
+  :global(.essay-contrast-list.old li::before) {
+    color: var(--ink4);
+  }
+  :global(.essay-contrast-list.new li::before) {
+    color: var(--accent);
+  }
+
+  :global(.essay-rule) {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3.5rem 0;
+  }
+
+  :global(.essay-closing) {
+    background: var(--ink);
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+  :global(.essay-closing p) {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: #b8b5a8;
+    margin-bottom: 1rem;
+  }
+  :global(.essay-closing p:last-child) {
+    margin-bottom: 0;
+  }
+  :global(.essay-closing p strong) {
+    color: var(--paper);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  @media (max-width: 540px) {
+    :global(.essay-convictions),
+    :global(.essay-contrast) {
+      grid-template-columns: 1fr;
+    }
+    .essay-title {
+      font-size: 2.1rem;
+    }
+  }
+</style>

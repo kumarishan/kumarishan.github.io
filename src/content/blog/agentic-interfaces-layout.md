@@ -4,7 +4,7 @@ author: Kumar Ishan
 pubDatetime: 2025-06-21T09:12:47Z
 slug: agent-interface-layout
 featured: true
-draft: false
+draft: true
 tags: ["agentic interface"]
 description: "How chat placement isn’t just UX, it’s a deliberate statement of your AI agent’s maturity and intended role."
 ---

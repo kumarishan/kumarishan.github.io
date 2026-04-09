@@ -1,0 +1,181 @@
+---
+import EssayShell from "@components/essay/EssayShell.astro";
+
+const title = "Where AI Belongs in<br><em>Agentic</em><br>Interfaces";
+const description =
+  "Chat placement is not a cosmetic choice. It is one of the clearest signals of what role your AI is supposed to play in the product.";
+const pubDatetime = new Date("2025-06-21T09:12:47Z");
+const tags = ["agentic interface", "design", "ux"];
+---
+
+<EssayShell {title} {description} {pubDatetime} {tags}>
+  <Fragment slot="thesis">
+    <p>
+      Interface layout is product philosophy made visible. <strong
+        >Where you place the agent tells users whether it is the hero, the
+        copilot, or just a utility.</strong
+      > Before anyone reads your onboarding copy, the page has already made that
+      argument for you.
+    </p>
+  </Fragment>
+
+  <section>
+    <span class="essay-section-num">§ 01 — The question</span>
+    <h2 class="essay-h2">Why placement matters more than teams admit</h2>
+    <div class="essay-prose">
+      <p>
+        When people talk about AI product design, they usually focus on models,
+        prompts, and response quality. But the first thing users actually
+        encounter is placement. Where does the agent live? What gets primary
+        attention? What stays peripheral?
+      </p>
+      <p>
+        That decision quietly shapes expectation. If chat owns the left edge,
+        the product feels AI-first. If it sits to the right of a canvas, it
+        feels like support. If it stays collapsed until summoned, it feels
+        optional.
+      </p>
+      <p>In other words, layout is not decoration. It's role assignment.</p>
+    </div>
+    <div class="essay-pq">
+      <p>
+        Before users evaluate the intelligence of the system, they evaluate its
+        position in the workflow.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 02 — The pattern</span>
+    <h2 class="essay-h2">Left means lead. Right means assist.</h2>
+    <div class="essay-prose">
+      <p>
+        Products that center conversation as the primary act tend to privilege
+        the chat surface. The agent is not helping the workflow. The agent <strong
+          >is</strong
+        > the workflow. A left-side placement aligns with how users scan a new interface
+        and signals that conversation is the main entry point.
+      </p>
+      <p>
+        By contrast, products like editors, docs, or spreadsheets often keep the
+        working surface central and push the agent aside. That tells the user
+        something important: keep your attention on the main artifact, call the
+        AI when needed, then return to the work.
+      </p>
+    </div>
+    <div class="essay-contrast">
+      <div class="essay-contrast-col">
+        <div class="essay-contrast-head old">Chat on the left</div>
+        <ul class="essay-contrast-list old">
+          <li>AI is the starting point</li>
+          <li>User expects guidance and generation</li>
+          <li>Conversation drives the workflow</li>
+          <li>Canvas is a consequence of chat</li>
+        </ul>
+      </div>
+      <div class="essay-contrast-col">
+        <div class="essay-contrast-head new">Chat on the right</div>
+        <ul class="essay-contrast-list new">
+          <li>Work surface stays primary</li>
+          <li>AI feels like an embedded helper</li>
+          <li>User keeps control of the artifact</li>
+          <li>Conversation supports the workflow</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 03 — The reading</span>
+    <h2 class="essay-h2">Layout is a maturity signal</h2>
+    <div class="essay-prose">
+      <p>
+        If the AI is central enough to occupy the user's first attention, you're
+        making a strong claim: this system is capable, trustworthy, and core to
+        the product's value. That is a maturity statement.
+      </p>
+      <p>
+        If it stays peripheral, you're making the opposite claim: useful, yes,
+        but not yet authoritative enough to anchor the workflow. That isn't
+        necessarily weakness. Sometimes it's the correct level of humility.
+      </p>
+      <p>The mistake is pretending the choice is neutral. It never is.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 04 — The decision</span>
+    <h2 class="essay-h2">Design the role first, then place the interface</h2>
+    <div class="essay-convictions">
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">01</div><div
+          class="essay-conviction-title"
+        >
+          If AI is the product, let it lead visually
+        </div><div class="essay-conviction-body">
+          Put the conversation where users naturally begin. The layout should
+          reinforce the product's center of gravity.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">02</div><div
+          class="essay-conviction-title"
+        >
+          If AI is a helper, let the artifact stay dominant
+        </div><div class="essay-conviction-body">
+          In work-oriented tools, keep attention on the thing being edited, not
+          the assistant attached to it.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">03</div><div
+          class="essay-conviction-title"
+        >
+          Do not hide philosophy behind visual neutrality
+        </div><div class="essay-conviction-body">
+          A plain layout still communicates. If you avoid making the role clear,
+          users will infer one anyway.
+        </div>
+      </div>
+      <div class="essay-conviction essay-conviction-core">
+        <div class="essay-conviction-n">Core</div><div
+          class="essay-conviction-title"
+        >
+          Placement is product strategy in layout form
+        </div><div class="essay-conviction-body">
+          The question is not "left or right?" The question is "what
+          relationship should the user have with the agent?" Placement merely
+          makes that answer visible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="essay-rule" />
+
+  <section>
+    <span class="essay-section-num">§ 05 — The call</span>
+    <h2 class="essay-h2">Stop treating interface placement as cosmetic</h2>
+    <div class="essay-prose">
+      <p>
+        Users read a layout before they understand a feature set. That means the
+        geometry of the interface is one of your earliest and strongest product
+        statements.
+      </p>
+      <p>
+        Designers should stop asking only where chat looks best. They should ask
+        what the placement declares about the agent's role.
+      </p>
+    </div>
+    <div class="essay-closing">
+      <p>
+        Left says: begin with the agent.<br />Right says: continue your work,
+        and ask for help when needed.
+      </p>
+      <p>
+        <strong
+          >The placement is the promise. Make sure the product can keep it.</strong>
+      </p>
+    </div>
+  </section>
+</EssayShell>

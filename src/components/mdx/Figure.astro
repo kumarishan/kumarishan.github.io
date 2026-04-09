@@ -1,0 +1,32 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, alt, caption, width, height } = Astro.props;
+---
+
+<figure class="my-8">
+  <!-- Use a plain img tag; works for both /public/ paths and remote URLs.
+       For Astro-optimized images, use <Image> from astro:assets directly in MDX instead. -->
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+    class="mx-auto rounded-md"
+  />
+  {
+    caption && (
+      <figcaption class="mt-2 text-center text-sm opacity-70">
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  src: string;
+  title: string;
+  height?: string;
+}
+
+const { src, title, height = "500px" } = Astro.props;
+---
+
+<div class="my-8 overflow-hidden rounded-lg border border-skin-line">
+  <iframe
+    src={src}
+    title={title}
+    style={`width: 100%; height: ${height}; border: none;`}
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi"
+  ></iframe>
+</div>

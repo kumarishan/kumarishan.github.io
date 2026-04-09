@@ -7,14 +7,11 @@ import LinkButton from "@components/LinkButton.astro";
 import Socials from "@components/Socials.astro";
 import { SOCIALS } from "@config";
 import Layout from "@layouts/Layout.astro";
-import getSortedPosts from "@utils/getSortedPosts";
-import { getCollection } from "astro:content";
+import { getAllPosts } from "@utils/getAllPosts";
 
-const posts = await getCollection("blog");
-
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const sortedPosts = await getAllPosts();
+const featuredPosts = sortedPosts.filter(post => post.featured);
+const recentPosts = sortedPosts.filter(post => !post.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -65,12 +62,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <section id="featured">
             <h2>Featured</h2>
             <ul>
-              {featuredPosts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}/`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
+              {featuredPosts.map(post => (
+                <Card href={post.href} frontmatter={post} secHeading={false} />
               ))}
             </ul>
           </section>
@@ -85,11 +78,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <h2>Recent Posts</h2>
           <ul>
             {recentPosts.map(
-              ({ data, slug }, index) =>
+              (post, index) =>
                 index < 4 && (
                   <Card
-                    href={`/posts/${slug}/`}
-                    frontmatter={data}
+                    href={post.href}
+                    frontmatter={post}
                     secHeading={false}
                   />
                 )
@@ -117,25 +110,35 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pb-6 pt-8;
+    @apply pb-8 pt-10;
   }
   #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+    @apply my-4 inline-block sm:my-8;
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
   }
   #hero .rss-link {
-    @apply mb-6;
+    @apply mb-6 inline-flex rounded-sm border border-skin-line bg-skin-card px-3 py-2;
   }
   #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+    @apply h-5 w-5 scale-100 fill-skin-accent;
   }
   #hero p {
-    @apply my-2;
+    @apply my-4 max-w-2xl text-lg;
+    color: rgba(var(--color-text-base), 0.82);
   }
   .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+    @apply mt-6 flex flex-col sm:flex-row sm:items-center;
   }
   .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+    @apply mb-2 mr-3 whitespace-nowrap sm:mb-0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
@@ -145,9 +148,18 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   #featured h2,
   #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
+    @apply text-2xl;
+    font-family: var(--font-serif);
+    font-weight: 700;
   }
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
+  }
+  .all-posts-btn-wrapper a {
+    @apply inline-flex items-center gap-2 rounded-sm border border-skin-line bg-skin-card px-4 py-2;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 </style>
