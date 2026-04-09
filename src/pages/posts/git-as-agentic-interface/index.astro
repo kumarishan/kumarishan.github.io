@@ -1,0 +1,1000 @@
+---
+import EssayShell from "@components/essay/EssayShell.astro";
+
+const title = "Git-Native<br><em>Agentic</em><br>Development Flow";
+const description =
+  "Modern coding agents can already own meaningful chunks of execution. The missing piece is a universal language for human judgment, agent action, and shared coordination.";
+const pubDatetime = new Date("2026-04-09T10:00:00Z");
+const tags = ["agentic interface", "engineering", "git", "workflow"];
+---
+
+<EssayShell {title} {description} {pubDatetime} {tags}>
+  <Fragment slot="thesis">
+    <p>
+      Git-native workflow is not about getting rid of coding assistants. <strong
+        >It's about giving human and agent work a shared coordination language
+        once agents start owning real execution.</strong
+      > Diffs, staging, commits, branches, and pull requests already provide that
+      language. The question is whether teams are organized to use it deliberately.
+    </p>
+  </Fragment>
+
+  <section>
+    <span class="essay-section-num">§ 01 — The problem</span>
+    <h2 class="essay-h2">We've been framing this backwards</h2>
+    <div class="essay-prose">
+      <p>
+        Modern coding agents are getting good enough to own non-trivial chunks
+        of implementation. They can carry a task forward, react to failures, and
+        produce coherent change across files. That changes the shape of the
+        problem.
+      </p>
+      <p>
+        The hard part is no longer just generation. The hard part is <strong
+          >coordination</strong
+        >. How is intent expressed in a form both human and agent can act on?
+        Where does review happen? What counts as accepted work? Where does
+        ownership change hands? What state is trusted?
+      </p>
+      <p>
+        Most teams still answer those questions implicitly, differently across
+        tools, repos, and habits. That works while the machine is only
+        suggesting. It breaks down when the machine starts executing larger
+        units of work.
+      </p>
+      <p>
+        So the real problem is that we do not yet have a widely shared,
+        universal language for managing human judgment and agent-owned
+        execution. Git is the closest thing software teams already have.
+      </p>
+    </div>
+    <div class="essay-pq">
+      <p>
+        The bottleneck isn't what the agent can generate.<br />It's whether your
+        workflow can absorb what it produces.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 02 — The model</span>
+    <h2 class="essay-h2">What "Git-native" actually means</h2>
+    <div class="essay-prose">
+      <p>
+        Git-native agentic development is not a new coding tool. It's a workflow
+        stance, a set of convictions about where the boundaries between human
+        judgment and machine execution should live, and what protocol should
+        govern the handoffs between them.
+      </p>
+      <p>
+        Those handoffs already have names. We've had them for decades. We just
+        never treated them explicitly as a <strong
+          >human-agent coordination protocol</strong
+        >.
+      </p>
+    </div>
+    <div class="essay-diagram-wrap">
+      <div class="essay-diagram-label">
+        Git primitives as agent coordination protocol
+      </div>
+      <svg viewBox="0 12 680 166" xmlns="http://www.w3.org/2000/svg">
+        <defs
+          ><marker
+            id="a"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="8"
+            markerHeight="8"
+            orient="auto-start-reverse"
+            ><path
+              d="M2 1L8 5L2 9"
+              fill="none"
+              stroke="context-stroke"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></marker
+          ></defs
+        >
+        <rect
+          x="24"
+          y="32"
+          width="108"
+          height="64"
+          rx="4"
+          fill="#fdf3e3"
+          stroke="#d4a86a"
+          stroke-width="0.75"></rect><text
+          x="78"
+          y="54"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10.5"
+          fill="#a07030"
+          letter-spacing="0.08em">UNSTAGED</text
+        ><text
+          x="78"
+          y="74"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="14"
+          font-weight="500"
+          fill="#1a1916">Proposals</text
+        ><text
+          x="78"
+          y="91"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9.5"
+          fill="#9c9a93">open / forming</text
+        >
+        <rect
+          x="160"
+          y="32"
+          width="108"
+          height="64"
+          rx="4"
+          fill="#e8eef8"
+          stroke="#6a8ec4"
+          stroke-width="0.75"></rect><text
+          x="214"
+          y="54"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10.5"
+          fill="#3a6aaa"
+          letter-spacing="0.08em">STAGED</text
+        ><text
+          x="214"
+          y="74"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="14"
+          font-weight="500"
+          fill="#1a1916">Intent lock</text
+        ><text
+          x="214"
+          y="91"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9.5"
+          fill="#9c9a93">human decision</text
+        >
+        <rect
+          x="296"
+          y="32"
+          width="108"
+          height="64"
+          rx="4"
+          fill="#f2eefc"
+          stroke="#9680d4"
+          stroke-width="0.75"></rect><text
+          x="350"
+          y="54"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10.5"
+          fill="#6040b0"
+          letter-spacing="0.08em">COMMIT</text
+        ><text
+          x="350"
+          y="74"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="14"
+          font-weight="500"
+          fill="#1a1916">Trust unit</text
+        ><text
+          x="350"
+          y="91"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9.5"
+          fill="#9c9a93">frozen + signed</text
+        >
+        <rect
+          x="432"
+          y="32"
+          width="108"
+          height="64"
+          rx="4"
+          fill="#e8f2ec"
+          stroke="#5a9e78"
+          stroke-width="0.75"></rect><text
+          x="486"
+          y="54"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10.5"
+          fill="#2e7a50"
+          letter-spacing="0.08em">BRANCH</text
+        ><text
+          x="486"
+          y="74"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="14"
+          font-weight="500"
+          fill="#1a1916">Agent scope</text
+        ><text
+          x="486"
+          y="91"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9.5"
+          fill="#9c9a93">isolated workspace</text
+        >
+        <rect
+          x="568"
+          y="32"
+          width="88"
+          height="64"
+          rx="4"
+          fill="#faedea"
+          stroke="#c86050"
+          stroke-width="0.75"></rect><text
+          x="612"
+          y="54"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10.5"
+          fill="#c84b2f"
+          letter-spacing="0.08em">PR</text
+        ><text
+          x="612"
+          y="74"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="14"
+          font-weight="500"
+          fill="#1a1916">Gate</text
+        ><text
+          x="612"
+          y="91"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9.5"
+          fill="#9c9a93">human verdict</text
+        >
+        <line
+          x1="132"
+          y1="64"
+          x2="158"
+          y2="64"
+          stroke="#d8d4c8"
+          stroke-width="1"
+          marker-end="url(#a)"></line><line
+          x1="268"
+          y1="64"
+          x2="294"
+          y2="64"
+          stroke="#d8d4c8"
+          stroke-width="1"
+          marker-end="url(#a)"></line><line
+          x1="404"
+          y1="64"
+          x2="430"
+          y2="64"
+          stroke="#d8d4c8"
+          stroke-width="1"
+          marker-end="url(#a)"></line><line
+          x1="540"
+          y1="64"
+          x2="566"
+          y2="64"
+          stroke="#d8d4c8"
+          stroke-width="1"
+          marker-end="url(#a)"></line>
+        <line
+          x1="78"
+          y1="96"
+          x2="78"
+          y2="144"
+          stroke="#d8d4c8"
+          stroke-width="0.5"
+          stroke-dasharray="2 2"></line><line
+          x1="214"
+          y1="96"
+          x2="214"
+          y2="144"
+          stroke="#d8d4c8"
+          stroke-width="0.5"
+          stroke-dasharray="2 2"></line><line
+          x1="350"
+          y1="96"
+          x2="350"
+          y2="144"
+          stroke="#d8d4c8"
+          stroke-width="0.5"
+          stroke-dasharray="2 2"></line><line
+          x1="486"
+          y1="96"
+          x2="486"
+          y2="144"
+          stroke="#d8d4c8"
+          stroke-width="0.5"
+          stroke-dasharray="2 2"></line><line
+          x1="612"
+          y1="96"
+          x2="612"
+          y2="144"
+          stroke="#d8d4c8"
+          stroke-width="0.5"
+          stroke-dasharray="2 2"></line>
+        <text
+          x="78"
+          y="158"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10"
+          fill="#b86b18">agent writes</text
+        ><text
+          x="214"
+          y="158"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10"
+          fill="#1e4e8c">human decides</text
+        ><text
+          x="350"
+          y="158"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10"
+          fill="#6b6860">shared record</text
+        ><text
+          x="486"
+          y="158"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10"
+          fill="#2e6b48">agent owns</text
+        ><text
+          x="612"
+          y="158"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="10"
+          fill="#c84b2f">human closes</text
+        >
+      </svg>
+    </div>
+    <div class="essay-prose">
+      <p>
+        Each primitive maps to a specific kind of decision, and each decision
+        has a natural owner. <strong>Unstaged changes are proposal space</strong
+        >, where agent output can stay fluid. <strong
+          >Staging is a human act</strong
+        >, the moment direction is explicitly accepted. <strong
+          >A commit is a trust boundary</strong
+        >, the point where reviewed work becomes a durable, shareable state. <strong
+          >A branch is an isolated execution scope.</strong
+        > A PR is where a human closes the loop.
+      </p>
+      <p>
+        This isn't metaphor. These are the exact semantics Git has always had.
+        Git-native agentic development is just taking those semantics seriously
+        and using them as the shared language between human reviewers, coding
+        assistants, and agent-owned execution.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 03 — The convictions</span>
+    <h2 class="essay-h2">Five convictions that define the approach</h2>
+    <div class="essay-convictions">
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">01</div><div
+          class="essay-conviction-title"
+        >
+          Diffs are the unit of agent output, not files, not features
+        </div><div class="essay-conviction-body">
+          Agents don't deliver code. They deliver change. A diff is reviewable,
+          rejectable, composable. A file dump is none of those things. Every
+          agent output should be expressed as a diff against a known baseline.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">02</div><div
+          class="essay-conviction-title"
+        >
+          Staging is a semantic act, not a Git housekeeping step
+        </div><div class="essay-conviction-body">
+          When you stage a change, you declare: this direction is correct. That
+          act should come after human review, never before. Staging is the
+          boundary between machine proposal and human intent.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">03</div><div
+          class="essay-conviction-title"
+        >
+          Branches are agent workspaces, not human feature branches
+        </div><div class="essay-conviction-body">
+          Each agent task gets its own branch. The agent operates freely within
+          it, generating, iterating, self-correcting. The branch is ephemeral;
+          only the PR matters. Merging without a PR is never acceptable in this
+          model.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">04</div><div
+          class="essay-conviction-title"
+        >
+          A commit is a trust artifact, not a save point
+        </div><div class="essay-conviction-body">
+          In a Git-native agentic flow, a commit means: this state was reviewed,
+          approved, and is coherent enough to become durable history. Agents can
+          create commits, but only after explicit human approval.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">05</div><div
+          class="essay-conviction-title"
+        >
+          PRs are verdict interfaces, not collaboration surfaces
+        </div><div class="essay-conviction-body">
+          By the time code reaches a PR, the agent has already iterated, tests
+          have passed, and the human has curated diffs. The PR is where a second
+          human applies final judgment, not where development happens.
+        </div>
+      </div>
+      <div class="essay-conviction essay-conviction-core">
+        <div class="essay-conviction-n">Core</div><div
+          class="essay-conviction-title"
+        >
+          The workflow must scale from assistance to ownership
+        </div><div class="essay-conviction-body">
+          A good workflow should support small assistant-like suggestions and
+          also larger agent-owned execution. The point is to give every level of
+          machine involvement the same understandable coordination model.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 04 — The architecture</span>
+    <h2 class="essay-h2">The loop, in full</h2>
+    <div class="essay-prose">
+      <p>
+        Git-native agentic development isn't a linear pipeline. It's a closed
+        loop with two actors alternating across a shared protocol. Neither can
+        proceed without the other. That's the point.
+      </p>
+    </div>
+    <div class="essay-diagram-wrap">
+      <div class="essay-diagram-label">
+        Human-agent loop — git-native coordination cycle
+      </div>
+      <svg viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker
+            id="a2"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="7"
+            markerHeight="7"
+            orient="auto-start-reverse"
+          >
+            <path
+              d="M2 1L8 5L2 9"
+              fill="none"
+              stroke="context-stroke"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </marker>
+        </defs>
+
+        <!-- HUMAN swim lane -->
+        <rect
+          x="10"
+          y="15"
+          width="282"
+          height="415"
+          rx="8"
+          fill="#e8eef808"
+          stroke="#d8d4c8"
+          stroke-width="0.75"></rect>
+        <text
+          x="151"
+          y="36"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9"
+          fill="#1e4e8c"
+          letter-spacing="0.18em">HUMAN</text
+        >
+
+        <!-- AGENT swim lane -->
+        <rect
+          x="370"
+          y="15"
+          width="300"
+          height="265"
+          rx="8"
+          fill="#e8f2ec08"
+          stroke="#d8d4c8"
+          stroke-width="0.75"></rect>
+        <text
+          x="520"
+          y="36"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="9"
+          fill="#2e6b48"
+          letter-spacing="0.18em">AGENT</text
+        >
+
+        <!-- H1: Write Intent + Stage -->
+        <rect
+          x="22"
+          y="48"
+          width="256"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#6a8ec4"
+          stroke-width="0.9"></rect>
+        <text
+          x="150"
+          y="71"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#1a1916">Write Intent</text
+        >
+        <text
+          x="150"
+          y="89"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8.5"
+          fill="#3a6aaa">stage → intent locked</text
+        >
+
+        <!-- A1a: Read Intent -->
+        <rect
+          x="382"
+          y="48"
+          width="82"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#5a9e78"
+          stroke-width="0.9"></rect>
+        <text
+          x="423"
+          y="73"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Read</text
+        >
+        <text
+          x="423"
+          y="90"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Intent</text
+        >
+
+        <!-- A1b: Generate Code -->
+        <rect
+          x="474"
+          y="48"
+          width="82"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#5a9e78"
+          stroke-width="0.9"></rect>
+        <text
+          x="515"
+          y="73"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Generate</text
+        >
+        <text
+          x="515"
+          y="90"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Code</text
+        >
+
+        <!-- A1c: Run Tests -->
+        <rect
+          x="566"
+          y="48"
+          width="94"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#5a9e78"
+          stroke-width="0.9"></rect>
+        <text
+          x="613"
+          y="73"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Run</text
+        >
+        <text
+          x="613"
+          y="90"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="11.5"
+          font-weight="500"
+          fill="#1a1916">Tests</text
+        >
+
+        <!-- Arrows within A1 row -->
+        <line
+          x1="464"
+          y1="76"
+          x2="472"
+          y2="76"
+          stroke="#5a9e78"
+          stroke-width="0.9"
+          marker-end="url(#a2)"></line>
+        <line
+          x1="556"
+          y1="76"
+          x2="564"
+          y2="76"
+          stroke="#5a9e78"
+          stroke-width="0.9"
+          marker-end="url(#a2)"></line>
+
+        <!-- H2: Review Diffs (decision node) -->
+        <rect
+          x="22"
+          y="198"
+          width="256"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#6a8ec4"
+          stroke-width="0.9"></rect>
+        <text
+          x="150"
+          y="221"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#1a1916">Review Diffs</text
+        >
+        <text
+          x="150"
+          y="239"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8.5"
+          fill="#9c9a93">accept · reject · revise</text
+        >
+
+        <!-- A2a: Commit -->
+        <rect
+          x="382"
+          y="198"
+          width="126"
+          height="56"
+          rx="4"
+          fill="#faf9f6"
+          stroke="#9680d4"
+          stroke-width="0.9"></rect>
+        <text
+          x="445"
+          y="221"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#1a1916">Commit</text
+        >
+        <text
+          x="445"
+          y="239"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8.5"
+          fill="#6040b0">approved state</text
+        >
+
+        <!-- A2b: Open PR -->
+        <rect
+          x="518"
+          y="198"
+          width="142"
+          height="56"
+          rx="4"
+          fill="#faedea"
+          stroke="#c86050"
+          stroke-width="0.9"></rect>
+        <text
+          x="589"
+          y="221"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#1a1916">Open PR</text
+        >
+        <text
+          x="589"
+          y="239"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8.5"
+          fill="#c84b2f">human verdict</text
+        >
+
+        <!-- Arrow A2a → A2b -->
+        <line
+          x1="508"
+          y1="226"
+          x2="516"
+          y2="226"
+          stroke="#9680d4"
+          stroke-width="0.9"
+          marker-end="url(#a2)"></line>
+
+        <!-- H3: PR Review -->
+        <rect
+          x="22"
+          y="352"
+          width="256"
+          height="56"
+          rx="4"
+          fill="#faedea"
+          stroke="#c86050"
+          stroke-width="0.9"></rect>
+        <text
+          x="150"
+          y="375"
+          text-anchor="middle"
+          font-family="'DM Sans',sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#1a1916">PR Review</text
+        >
+        <text
+          x="150"
+          y="393"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8.5"
+          fill="#c84b2f">approve · comment · reject</text
+        >
+
+        <!-- MAIN FLOW ARROWS -->
+
+        <!-- H1 → A1a: stage triggers agent -->
+        <line
+          x1="278"
+          y1="76"
+          x2="380"
+          y2="76"
+          stroke="#b86b18"
+          stroke-width="0.9"
+          stroke-dasharray="3 3"
+          marker-end="url(#a2)"></line>
+        <text
+          x="329"
+          y="68"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8"
+          fill="#b86b18">triggers</text
+        >
+
+        <!-- A1c (bottom-center) → H2: proposes diffs (down → left → up) -->
+        <path
+          d="M 613 104 L 613 150 L 278 150 L 278 196"
+          fill="none"
+          stroke="#5a9e78"
+          stroke-width="0.9"
+          stroke-dasharray="3 3"
+          marker-end="url(#a2)"></path>
+        <text
+          x="448"
+          y="143"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8"
+          fill="#5a9e78">proposes diffs</text
+        >
+
+        <!-- H2 → A2a: stage code (forward path) -->
+        <line
+          x1="278"
+          y1="226"
+          x2="380"
+          y2="226"
+          stroke="#6a8ec4"
+          stroke-width="0.9"
+          marker-end="url(#a2)"></line>
+        <text
+          x="329"
+          y="218"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8"
+          fill="#6a8ec4">stage code</text
+        >
+
+        <!-- A2b (bottom-center) → H3: PR opened (down → left → up) -->
+        <path
+          d="M 589 254 L 589 300 L 278 300 L 278 350"
+          fill="none"
+          stroke="#c86050"
+          stroke-width="0.9"
+          stroke-dasharray="3 3"
+          marker-end="url(#a2)"></path>
+        <text
+          x="434"
+          y="293"
+          text-anchor="middle"
+          font-family="'JetBrains Mono',monospace"
+          font-size="8"
+          fill="#c84b2f">PR opened</text
+        >
+
+        <!-- FEEDBACK LOOPS -->
+
+        <!-- H2 → H1: update intent (straight up in gap) -->
+        <path
+          d="M 100 198 L 100 104"
+          fill="none"
+          stroke="#b86b18"
+          stroke-width="0.9"
+          stroke-dasharray="4 2"
+          marker-end="url(#a2)"></path>
+        <text
+          x="93"
+          y="151"
+          text-anchor="end"
+          font-family="'JetBrains Mono',monospace"
+          font-size="7.5"
+          fill="#b86b18">update intent</text
+        >
+
+        <!-- H3 → H1: comment → new intent (long left-rail loop) -->
+        <path
+          d="M 22 380 L 6 380 L 6 76 L 20 76"
+          fill="none"
+          stroke="#c84b2f"
+          stroke-width="0.9"
+          stroke-dasharray="4 2"
+          marker-end="url(#a2)"></path>
+        <text
+          x="35"
+          y="305"
+          font-family="'JetBrains Mono',monospace"
+          font-size="7.5"
+          fill="#c84b2f">comment</text
+        >
+        <text
+          x="35"
+          y="317"
+          font-family="'JetBrains Mono',monospace"
+          font-size="7.5"
+          fill="#c84b2f">→ intent</text
+        >
+      </svg>
+    </div>
+    <div class="essay-prose">
+      <p>
+        The loop begins with the human. Intent is written and staged — a
+        deliberate act that locks direction and triggers the agent. The agent
+        reads the staged intent, generates code, and runs tests autonomously,
+        leaving its output as unstaged diffs. Those diffs come back to the human
+        for review. Here the loop forks: if the direction needs adjusting,
+        intent is updated and staged again, restarting the cycle from the top.
+        If the diffs look right, the human stages the code and the agent commits
+        and opens a PR. A second reviewer reads the PR, and any comment or
+        objection becomes new intent — feeding the loop again from the
+        beginning.
+      </p>
+      <p>
+        Two invariants hold throughout. <strong
+          >The agent never finalizes its own output</strong
+        > — everything it produces stays unstaged and reviewable until a human explicitly
+        accepts it. <strong>The human never accepts blindly</strong> — staging is
+        an act of judgment, not housekeeping. These are not bureaucratic constraints.
+        They are what keep the system auditable and reversible as agent scope grows.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 05 — The shift</span>
+    <h2 class="essay-h2">What changes — and what doesn't</h2>
+    <div class="essay-contrast">
+      <div class="essay-contrast-col">
+        <div class="essay-contrast-head old">How most teams work now</div><ul
+          class="essay-contrast-list old"
+        >
+          <li>Agent output accepted inline, no diff review</li><li>
+            Commits are frequent save points, low signal
+          </li><li>Human and agent changes mix without clear boundaries</li><li>
+            PRs are where dev actually happens
+          </li><li>Intent lives in tickets, not in code</li><li>
+            Assistants help, but ownership is hard to manage
+          </li>
+        </ul>
+      </div>
+      <div class="essay-contrast-col">
+        <div class="essay-contrast-head new">Git-native agentic flow</div><ul
+          class="essay-contrast-list new"
+        >
+          <li>All agent output surfaces as reviewable diffs</li><li>
+            Commits are trust artifacts, human-approved
+          </li><li>Execution scopes are isolated and understandable</li><li>
+            PRs are verdict interfaces, work is already shaped
+          </li><li>Intent is expressed as staged code, machine-readable</li><li>
+            One universal language works for help and ownership
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="essay-prose">
+      <p>
+        What doesn't change: Git itself. You don't need new tools. You don't
+        need a new platform. The protocol already exists. What changes is the
+        discipline, how your team decides what staging means, who is allowed to
+        commit, and what it means for a PR to be ready.
+      </p>
+    </div>
+  </section>
+
+  <hr class="essay-rule" />
+
+  <section>
+    <span class="essay-section-num">§ 06 — The call</span>
+    <h2 class="essay-h2">Build the process agents were born for</h2>
+    <div class="essay-prose">
+      <p>
+        The teams that will work effectively with agents are not just the ones
+        with capable models. They're the ones with a clear protocol, where every
+        handoff is explicit, every output is reviewable, and every decision has
+        a defined owner.
+      </p>
+      <p>
+        That protocol already exists. You've been using it for years. What
+        changes now is the need to treat it explicitly as the shared language
+        between human judgment and agent-owned work.
+      </p>
+    </div>
+    <div class="essay-closing">
+      <p>
+        Diffs are the native language of machine-generated change.<br />Staging
+        is the boundary between machine proposal and human intent.<br />A commit
+        is a declaration of trust, not a save point.
+      </p>
+      <p>
+        <strong
+          >Git-native agentic development is about using Git as the universal
+          coordination language that works whether the machine is suggesting,
+          iterating, or fully owning execution.</strong>
+      </p>
+    </div>
+  </section>
+</EssayShell>

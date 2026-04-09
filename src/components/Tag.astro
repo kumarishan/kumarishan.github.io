@@ -7,15 +7,11 @@ export interface Props {
 const { tag, size = "sm" } = Astro.props;
 ---
 
-<li
-  class={`inline-block ${
-    size === "sm" ? "my-1 underline-offset-4" : "my-3 mx-1 underline-offset-8"
-  }`}
->
+<li class={`inline-block ${size === "sm" ? "my-1 mr-2" : "my-3 mx-1"}`}>
   <a
     href={`/tags/${tag}/`}
     transition:name={tag}
-    class={`${size === "sm" ? "text-sm" : "text-lg"} pr-2 group`}
+    class={`${size === "sm" ? "text-[0.7rem]" : "text-sm"} group inline-flex items-center gap-1 rounded-sm bg-skin-card px-2.5 py-1.5`}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,9 +26,12 @@ const { tag, size = "sm" } = Astro.props;
 
 <style>
   a {
-    @apply relative underline decoration-dashed hover:-top-0.5 hover:text-skin-accent focus-visible:p-1;
+    @apply hover:bg-skin-card-muted hover:text-skin-accent focus-visible:p-1;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   a svg {
-    @apply -mr-5 h-6 w-6 scale-95 text-skin-base opacity-80 group-hover:fill-skin-accent;
+    @apply h-4 w-4 scale-100 text-skin-base opacity-70 group-hover:fill-skin-accent;
   }
 </style>

@@ -1,0 +1,127 @@
+---
+import EssayShell from "@components/essay/EssayShell.astro";
+
+const title = "Why This Blog Exists";
+const description =
+  "I wanted a place to think in public about AI, product design, engineering judgment, and the systems that shape how we work.";
+const pubDatetime = new Date("2024-07-13T09:12:47Z");
+const tags = ["writing", "blog", "personal"];
+---
+
+<EssayShell {title} {description} {pubDatetime} {tags}>
+  <Fragment slot="thesis">
+    <p>
+      This site is not a content engine. <strong
+        >It's a place to sharpen ideas in public.</strong
+      > Some posts will be technical. Some will be product essays. All of them are
+      attempts to make my own thinking clearer by forcing it into language.
+    </p>
+  </Fragment>
+
+  <section>
+    <span class="essay-section-num">§ 01 — The start</span>
+    <h2 class="essay-h2">Writing is how I reduce vagueness</h2>
+    <div class="essay-prose">
+      <p>
+        Most ideas feel sharper in your head than they really are. Writing
+        exposes that gap quickly. A sentence either holds or it doesn't. An
+        argument either survives structure or it falls apart.
+      </p>
+      <p>
+        That is the main reason this blog exists. I wanted a place where I could
+        take half-formed intuitions about software, AI, startups, and
+        productivity, then force them into something more precise.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 02 — The scope</span>
+    <h2 class="essay-h2">What I expect to write about here</h2>
+    <div class="essay-convictions">
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">01</div><div
+          class="essay-conviction-title"
+        >
+          AI systems and interfaces
+        </div><div class="essay-conviction-body">
+          How intelligent systems should be designed, where they belong in
+          products, and what workflows they change.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">02</div><div
+          class="essay-conviction-title"
+        >
+          Engineering as decision-making
+        </div><div class="essay-conviction-body">
+          Not just code, but the protocols, abstractions, and tradeoffs that
+          make teams effective.
+        </div>
+      </div>
+      <div class="essay-conviction">
+        <div class="essay-conviction-n">03</div><div
+          class="essay-conviction-title"
+        >
+          Startups and leverage
+        </div><div class="essay-conviction-body">
+          What creates momentum, what creates noise, and how small decisions
+          compound over time.
+        </div>
+      </div>
+      <div class="essay-conviction essay-conviction-core">
+        <div class="essay-conviction-n">Core</div><div
+          class="essay-conviction-title"
+        >
+          Learning in public
+        </div><div class="essay-conviction-body">
+          This blog is not a record of certainty. It's a record of refinement.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="essay-section-num">§ 03 — The tone</span>
+    <h2 class="essay-h2">What kind of writing belongs here</h2>
+    <div class="essay-prose">
+      <p>
+        I don't want this to become a stream of shallow updates. The internet
+        already has enough of those. The bar here is simple: every post should
+        try to say something clearly enough that it changes how I or someone
+        else sees the topic.
+      </p>
+      <p>
+        That means fewer posts, but better ones. More structure. More opinion.
+        More attempts at clarity.
+      </p>
+    </div>
+    <div class="essay-pq">
+      <p>
+        The goal is not to publish often. The goal is to publish things worth
+        returning to.
+      </p>
+    </div>
+  </section>
+
+  <hr class="essay-rule" />
+
+  <section>
+    <span class="essay-section-num">§ 04 — The call</span>
+    <h2 class="essay-h2">So this is the beginning</h2>
+    <div class="essay-prose">
+      <p>
+        There will be essays, frameworks, experiments, and probably a few strong
+        opinions that need revision later. That's fine. The point is to start,
+        then keep improving the thinking.
+      </p>
+    </div>
+    <div class="essay-closing">
+      <p>This blog is a notebook with sharper edges.</p>
+      <p>
+        <strong
+          >I'm here to think more clearly, and writing is the mechanism.</strong>
+      </p>
+    </div>
+  </section>
+</EssayShell>

@@ -61,11 +61,6 @@ const { activeNav } = Astro.props;
             </a>
           </li>
           <li>
-            <a href="/tags/" class={activeNav === "tags" ? "active" : ""}>
-              Tags
-            </a>
-          </li>
-          <li>
             <a href="/about/" class={activeNav === "about" ? "active" : ""}>
               About
             </a>
@@ -113,7 +108,7 @@ const { activeNav } = Astro.props;
       </nav>
     </div>
   </div>
-  <Hr />
+  <Hr noPadding />
 </header>
 
 <style>
@@ -121,13 +116,16 @@ const { activeNav } = Astro.props;
     @apply absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4;
   }
   .nav-container {
-    @apply mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row;
+    @apply flex w-full flex-col items-center justify-between sm:flex-row;
   }
   .top-nav-wrap {
-    @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
+    @apply relative flex w-full items-start justify-between px-4 py-2 sm:items-center sm:px-6 sm:py-2;
   }
   .logo {
-    @apply absolute py-1 text-xl font-semibold sm:static sm:text-2xl;
+    @apply absolute py-1 text-[0.85rem] sm:static sm:text-[1.2rem];
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
   .hamburger-menu {
     @apply self-end p-2 sm:hidden;
@@ -140,13 +138,17 @@ const { activeNav } = Astro.props;
     @apply flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
-    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
+    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-4 sm:gap-y-0;
   }
   nav ul li {
     @apply col-span-2 flex items-center justify-center;
   }
   nav ul li a {
-    @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
+    @apply w-full px-4 py-3 text-center hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
   nav ul li:nth-last-child(2) a {
     @apply w-auto;
@@ -156,10 +158,19 @@ const { activeNav } = Astro.props;
     @apply col-span-1;
   }
   nav a.active {
-    @apply underline decoration-wavy decoration-2 underline-offset-4;
+    @apply text-skin-accent;
+    text-decoration: none;
   }
   nav a.active svg {
     @apply fill-skin-accent;
+  }
+  nav a.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 0.3rem;
+    background: rgb(var(--color-accent));
   }
 
   nav button {
@@ -169,10 +180,10 @@ const { activeNav } = Astro.props;
     @apply h-6 w-6 fill-skin-base hover:fill-skin-accent;
   }
   #theme-btn {
-    @apply p-3 sm:p-1;
+    @apply p-3 sm:p-1.5;
   }
   #theme-btn svg {
-    @apply scale-125 hover:rotate-12 sm:scale-100;
+    @apply scale-125 hover:rotate-12 sm:scale-105;
   }
 
   .menu-icon line {
