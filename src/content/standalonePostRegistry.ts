@@ -46,7 +46,7 @@ export const standalonePostRegistry: StandalonePost[] = [
     pubDatetime: new Date("2026-04-09T10:00:00Z"),
     author: "Kumar Ishan",
     tags: ["agentic interface", "engineering", "git", "workflow"],
-    featured: false,
+    featured: true,
     draft: false,
     href: "/posts/git-as-agentic-interface/",
   },
